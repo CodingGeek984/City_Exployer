@@ -1,0 +1,347 @@
+:root {
+  color-scheme: light;
+
+  --bg: #f5f7fb;
+  --surface: rgba(255, 255, 255, 0.86);
+  --card: #ffffff;
+  --text: #162033;
+  --text-secondary: #607086;
+  --text-muted: #8a98aa;
+  --primary: #0f766e;
+  --primary-soft: #d9f8f2;
+  --secondary: #4056f4;
+  --accent: #f97350;
+  --border: rgba(95, 111, 135, 0.18);
+  --shadow: 0 18px 42px rgba(28, 42, 70, 0.12);
+  --error: #d92d55;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #101721;
+  --surface: rgba(20, 29, 43, 0.9);
+  --card: #172233;
+  --text: #eef4ff;
+  --text-secondary: #bac7d8;
+  --text-muted: #8795a8;
+  --primary: #5eead4;
+  --primary-soft: rgba(94, 234, 212, 0.14);
+  --secondary: #91a0ff;
+  --accent: #ff9a72;
+  --border: rgba(187, 201, 222, 0.18);
+  --shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+  --error: #fb7185;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100svh;
+  margin: 0;
+  background:
+    linear-gradient(155deg, rgba(15, 118, 110, 0.16), transparent 34%),
+    linear-gradient(25deg, rgba(249, 115, 80, 0.14), transparent 32%),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+#root {
+  width: min(100%, 520px);
+  min-height: 100svh;
+  margin: 0 auto;
+  position: relative;
+}
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 20;
+  width: min(100%, 520px);
+  min-height: 82px;
+  padding: 16px 20px 12px;
+  transform: translateX(-50%);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+}
+
+.eyebrow,
+.card-label {
+  display: block;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.app-header h1 {
+  margin: 4px 0 0;
+  color: var(--text);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.page {
+  width: 100%;
+  min-height: 100svh;
+  padding: 108px 16px 104px;
+}
+
+.places,
+.activities,
+.weather,
+.settings {
+  width: 100%;
+}
+
+.places h2,
+.activities h2,
+.weather h2,
+.settings h2 {
+  margin: 0 0 18px;
+  color: var(--text);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.08;
+  text-align: left;
+}
+
+.places-container,
+.activities-cards,
+.weather-list {
+  display: grid;
+  gap: 14px;
+}
+
+.place-card,
+.activity-card,
+.weather-card,
+.settings-card {
+  width: 100%;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.place-card,
+.weather-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 108px;
+  padding: 18px;
+}
+
+.place-card h3,
+.activity-card h3,
+.weather-card h3,
+.settings-card h3 {
+  margin: 5px 0 6px;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.place-card p,
+.activity-card p,
+.weather-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.place-card strong,
+.weather-card strong {
+  flex: 0 0 auto;
+  min-width: 58px;
+  padding: 9px 10px;
+  background: var(--primary-soft);
+  border-radius: 8px;
+  color: var(--primary);
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+}
+
+.activity-card {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  align-items: center;
+  min-height: 116px;
+}
+
+.activity-card img {
+  width: 92px;
+  height: 116px;
+  object-fit: cover;
+  background: var(--primary-soft);
+}
+
+.activity-card div {
+  min-width: 0;
+  padding: 16px;
+  text-align: left;
+}
+
+.activity-card h3 {
+  overflow-wrap: anywhere;
+}
+
+.settings-card {
+  padding: 18px;
+}
+
+.theme-options {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.radio input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+}
+
+.apply-btn {
+  width: 100%;
+  min-height: 50px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(249, 115, 80, 0.26);
+}
+
+.apply-btn:active {
+  transform: translateY(1px);
+}
+
+.loading,
+.error {
+  margin: 0;
+  padding: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  font-weight: 700;
+}
+
+.loading {
+  color: var(--text-secondary);
+}
+
+.error {
+  color: var(--error);
+}
+
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  z-index: 20;
+  width: min(100%, 520px);
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.footer-btn {
+  display: flex;
+  min-width: 0;
+  min-height: 58px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+}
+
+.footer-btn.active {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 22px;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+@media (min-width: 700px) {
+  #root,
+  .app-header,
+  .app-footer {
+    width: min(100%, 760px);
+  }
+
+  .page {
+    padding-inline: 24px;
+  }
+
+  .places-container,
+  .activities-cards,
+  .weather-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
